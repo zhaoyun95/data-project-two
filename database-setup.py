@@ -4,6 +4,8 @@ from config import db_username
 from config import db_password
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
+import pandas as pd
+import psycopg2
 
 engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
 connection = engine.connect()
@@ -20,12 +22,10 @@ def executeScriptsFromFile(filename):
 
     # Execute every command from the input file
     for command in sqlCommands:
-        # This will skip and report errors
-        # For example, if the tables do not yet exist, this will skip over
-        # the DROP TABLE commands
         command = command.strip()
         print(command)
         # print(f"--->{command}<----length: {len(command)}")
+        # skip empty lines and comments
         if (len(command) == 0) or (command.startswith("--")):
             continue
 
@@ -34,5 +34,9 @@ def executeScriptsFromFile(filename):
         except OperationalError as msg:
             print ("Command skipped: ", msg)
 
-
+# create tables
 executeScriptsFromFile('createDatabase.sql')
+
+# load csv into tables using Jupyter Notebook
+# we could also copy jupyter notebooks code here after everything works
+
