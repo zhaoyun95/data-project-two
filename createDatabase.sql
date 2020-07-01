@@ -26,7 +26,7 @@ CREATE TABLE company (
 -- historical price data downloaded from finance.yahoo.com;
 drop table if exists price;
 CREATE TABLE price (
-    ticker VARCHAR(20) REFERENCES company(ticker),
+    ticker VARCHAR(20),
     date date,
     open float,
     high float,
