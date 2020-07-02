@@ -64,6 +64,7 @@ print(company_df2.count())
 
 # --- Step Three: Load price csv files ---
 priceCSVFiles = glob.glob("data/*.csv")
+print(f"total files: {len(priceCSVFiles)}")
 print(priceCSVFiles)
 
 # remove old price data
