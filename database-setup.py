@@ -45,7 +45,7 @@ executeScriptsFromFile('createDatabase.sql')
 print(engine.table_names())
 
 # read company.xlsx
-company_df = pd.read_excel("data/company.xlsx");
+company_df = pd.read_excel("data/company.xlsx")
 print(company_df.head())
 
 # rerange column position to match database table columns

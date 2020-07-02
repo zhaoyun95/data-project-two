@@ -33,6 +33,6 @@ CREATE TABLE price (
     low float,
     close float,
     adj_close float,
-    volume integer,
+    volume bigint,
     PRIMARY KEY (ticker, date)
 );
