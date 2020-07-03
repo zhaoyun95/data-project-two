@@ -120,7 +120,7 @@ def getOneCompany(ticker):
 #     # Create our session (link) from Python to the DB
 #     session = Session(engine)
 
-#     # return a company by ticker 
+#     # return all Price data
 #     results = session.query(Price)
 #     session.close()
 
@@ -147,7 +147,7 @@ def getPrice(ticker):
     session = Session(engine)
     ticker = ticker.upper()
 
-    # return a company by ticker 
+    # return a company's price data
     results = session.query(Price).filter_by(ticker=ticker)
     session.close()
 
@@ -173,7 +173,7 @@ def getPriceStart(ticker, startDate):
     session = Session(engine)
     ticker = ticker.upper()
 
-    # return a company by ticker 
+    # return a company's price data with start Date
     results = session.query(Price).filter_by(ticker=ticker).filter(Price.date>=startDate).all()
     session.close()
 
@@ -199,7 +199,7 @@ def getPriceStartEnd(ticker, startDate, endDate):
     session = Session(engine)
     ticker = ticker.upper()
 
-    # return a company by ticker 
+    # return Price data with start date and end date
     results = session.query(Price).filter_by(ticker = ticker)\
         .filter(Price.date >= startDate)\
         .filter(Price.date <= endDate)\

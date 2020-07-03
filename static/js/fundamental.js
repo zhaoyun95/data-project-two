@@ -29,21 +29,22 @@ d3.json(url).then(function(data){
 
     // populate the ticker drop down list
     var dropdownMenu = d3.select("#selTicker");
-    dropdownMenu.on("change", updateAll);
+    dropdownMenu.on("change", updatePage);
     dropdownMenu.selectAll("option").remove();
     tickers.forEach(function(ticker){
         var option = dropdownMenu.append("option").text(ticker);
         option.attr("value", ticker);
     });
 
-    function updateAll(){
+    function updatePage(){
         updateSummaryPanel(data);
-        updateBarChart(data);
-        updateBubbleChart(data);
         updateGauge(data);
     }
 
-    updateAll();
+    // create initial charts
+    updatePage();
+    updateBarChart(data);
+    updateBubbleChart(data);
 });
 
 function updateSummaryPanel(data) {
