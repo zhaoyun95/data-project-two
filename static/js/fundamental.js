@@ -152,7 +152,7 @@ function updateBubbleChart(data){
     var layout = {
         showlegend: false,
         xaxis: {title:"Companies"},
-        yaxis: {title:"Price Earnings Ratio"}
+        yaxis: {title:"Price Earnings Ratio", range: [-50,400]}
     };
 
     Plotly.newPlot('bubble', data, layout);
