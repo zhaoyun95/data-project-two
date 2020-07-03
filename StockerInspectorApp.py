@@ -15,7 +15,7 @@ from flask import Flask, render_template, redirect
 #################################################
 # Database Setup
 #################################################
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
+engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5433/StocksDataBase')
 
 # reflect an existing database into a new model
 Base = automap_base()

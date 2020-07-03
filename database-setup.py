@@ -8,7 +8,7 @@ import pandas as pd
 import psycopg2
 import glob
 
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
+engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5433/StocksDataBase')
 connection = engine.connect()
 
 # function to execute .sql file
@@ -77,7 +77,7 @@ for file in priceCSVFiles:
     print(file)
     price_df = pd.read_csv(file)
     # print(price_df.head())
-    csv_file = file.split('\\')[1]
+    csv_file = file.split('/')[1]
     
     # ignore company.csv, we will handle it differetly
     if csv_file == "company.csv":
