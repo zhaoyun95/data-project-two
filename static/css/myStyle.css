@@ -1,0 +1,9 @@
+#titleSection {
+    /* background-image: url("../images/ocean.jpg"); */
+    color: rgb(42, 5, 209);
+    width: 100%;
+}
+
+body {
+    background-color: cornflowerblue;
+}
