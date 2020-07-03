@@ -7,6 +7,7 @@ from sqlalchemy.exc import OperationalError
 import pandas as pd
 import psycopg2
 import glob
+from pathlib import Path
 
 engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
 connection = engine.connect()
@@ -72,21 +73,15 @@ engine.execute("delete from price")
 
 # loop through all data/*.csv files and load them into price table
 for file in priceCSVFiles:
-    file = file.strip()
-    
+    # use Path() so that it will work for both Windows and Mac
+    file = Path(file.strip())
+
     print(file)
     price_df = pd.read_csv(file)
-    # print(price_df.head())
-    csv_file = file.split('\\')[1]
-    
-    # ignore company.csv, we will handle it differetly
-    if csv_file == "company.csv":
-        continue
-
-    ticker = csv_file.strip('.csv')
+  
+    ticker = file.stem
     price_df["ticker"] = ticker
    
-    
     # rename column heading to match database table columns
     price_df.rename(columns = {"Date":"date", "Open":"open", "High":"high", "Low":"low", "Close":"close", "Adj Close":"adj_close", "Volume":"volume"}, inplace=True)
     # make ticker as the first column
