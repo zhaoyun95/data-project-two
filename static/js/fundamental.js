@@ -51,7 +51,7 @@ function updateSummaryPanel(data) {
     console.log(`updateSummaryPanel: ${selectedTicker}`);
     
     var summaryPanel = d3.select("#summaryPanel");
-    summaryPanel.selectAll("p").remove();
+    summaryPanel.selectAll("div").remove();
     var company = {}
     for (i = 0; i < data.length; i++) {
         if (data[i].ticker == selectedTicker) {
@@ -61,7 +61,7 @@ function updateSummaryPanel(data) {
     }
 
     Object.entries(company).forEach(([key, value])=>{
-        summaryPanel.append("p").text(`${key}: ${value}`);
+        summaryPanel.append("div").text(`${key}: ${value}`);
     });
 };
 
