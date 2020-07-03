@@ -23,6 +23,7 @@ d3.json(url).then(function(data){
 
     // get all tickers
     var tickers = data.map(d=>d.ticker);
+    var names = data.map(d=>d.name);
     tickers.sort();
     console.log(tickers);
    
@@ -31,8 +32,8 @@ d3.json(url).then(function(data){
     var dropdownMenu = d3.select("#selTicker");
     dropdownMenu.on("change", updatePage);
     dropdownMenu.selectAll("option").remove();
-    tickers.forEach(function(ticker){
-        var option = dropdownMenu.append("option").text(ticker);
+    tickers.forEach(function(ticker, i){
+        var option = dropdownMenu.append("option").text(`${ticker} ${names[i].substring(0,12)}`);
         option.attr("value", ticker);
     });
 
@@ -66,13 +67,12 @@ function updateSummaryPanel(data) {
     });
 };
 
+// Market Cap Horizontal Bar Chart
 function updateBarChart(data){
     console.log("updateBarChart()");
     
     // sort companies by market cap
     data.sort((a,b) => b.mkt_cap - a.mkt_cap);
-    
-    
 
     var top10 = data.slice(0,10);
     top10.reverse();
@@ -99,9 +99,12 @@ function updateBarChart(data){
         margin: {
             l: 100,
             r: 100,
-            t: 0,
-            b: 25
-        }
+            t: 40,
+            b: 40
+        },
+        xaxis: {title:"Market Capitalization"},
+        yaxis: {title:"Ticker"},
+        title: {text:'Top 10 Companies by Market Cap' }
     };
 
 
@@ -111,7 +114,6 @@ function updateBarChart(data){
 
 // show Earnings Per Share (eps)
 function updateBubbleChart(data){
-    var selectedTicker = d3.select("#selTicker").property("value");
     console.log("updateBubbleChart()");
 
     var tickers = data.map(d=>d.ticker);
@@ -175,7 +177,7 @@ function updateGauge(data){
           type: "indicator",
           mode: "gauge+number",
           value: company.dividend_pct,
-          title: { text: `Dividend Percent (${company.ticker})`, font: { size: 24 } },
+          title: { text: 'Dividend Percent', font: { size: 24 } },
           subtitle: { text: `${company.ticker}`, font: { size: 18 } },
           gauge: {
             axis: { 
@@ -210,9 +212,10 @@ function updateGauge(data){
       ];
       
     var layout = {
-        margin: { t: 25, r: 25, l: 25, b: 25 },
+        margin: { t: 60, r: 25, l: 25, b: 25 },
         paper_bgcolor: "lavender",
-        font: { color: "darkblue", family: "Arial" }
+        font: { color: "darkblue", family: "Arial" },
+        title: {text: `${company.ticker}`, font: { size: 30 }}
      };
       
     Plotly.newPlot('gauge', data, layout);  

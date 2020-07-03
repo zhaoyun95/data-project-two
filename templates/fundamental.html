@@ -42,26 +42,39 @@
         <p>Use the interactive charts below to check out each stock</p>
       </div>
     </div>
+
+    
     <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Stock Ticker:</h5>
-          <select id="selTicker"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Summary</h3>
+      <div class="col-md-3">
+        
+        <div class="card text-white bg-primary border-success mb-3">
+          <!-- stock ticker drop down menu -->
+          <div class="card-header">
+            <h5>Stock:</h5>
+            <select id="selTicker"></select>
           </div>
-          <div id="summaryPanel" class="panel-body"></div>
+
+          <!-- Summary Panel -->
+          <div class="card-body">
+            <h3 class="card-title">Summary</h3>
+            <div id="summaryPanel" class="card-text"></div>
+          </div>
+        
         </div>
+      
       </div>
+      
+      <!-- Market Cap bar chart -->
       <div class="col-md-5">
         <div id="bar"></div>
       </div>
-      <div class="col-md-5">
+      
+      <!-- Dividend Gauge -->
+      <div class="col-md-4">
         <div id="gauge"></div>
       </div>
     </div>
+    
     <br>
     <div class="row">
       <div class="col-md-12">
