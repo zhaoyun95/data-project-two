@@ -2,6 +2,8 @@ config.py
 notes.txt
 ~$company.xlsx
 .DS_Store
+james.js
+james.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
