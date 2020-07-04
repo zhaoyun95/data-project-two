@@ -1,10 +1,3 @@
-function test() {
-    console.log("Testing");
-}
-
-test();
-
-
 const url = "/api/v1.0/company";
 
 d3.json(url).then(function(data){

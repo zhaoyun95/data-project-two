@@ -30,7 +30,7 @@ Price = Base.classes.price
 #################################################
 # Flask Setup
 #################################################
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 
 #################################################
@@ -38,9 +38,12 @@ app = Flask(__name__)
 #################################################
 
 @app.route("/")
-def fundamental():
-    return render_template("fundamental.html")
+def home():
+    return render_template('fundamental.html')
 
+@app.route("/fundamental")
+def fundamental():
+    return render_template('fundamental.html')
 
 @app.route("/technical")
 def technical():
