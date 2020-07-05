@@ -20,7 +20,7 @@ try:
     db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
 except ImportError:
     print("config not found!")
-    db_uri = "sqlite:///db.sqlite"
+    db_uri = "sqlite:///../db.sqlite"
 
 final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
 print(final_db_uri)

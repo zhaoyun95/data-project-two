@@ -10,8 +10,8 @@ from pathlib import Path
 
 db_uri = ""
 try:
-    from config import db_username
-    from config import db_password
+    from stock_inspector.config import db_username
+    from stock_inspector.config import db_password
     db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
 except ImportError:
     db_uri = "sqlite:///db.sqlite"
