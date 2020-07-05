@@ -37,61 +37,16 @@
   <div class="container">
     <div class="row" col-md-12>
       <div class="text-center" id="titleSection">
-        <h1>Fundamental Analysis</h1>
+        <h1>Environmental Analysis</h1>
         <p>Use the interactive charts below to check out each stock</p>
       </div>
     </div>
 
     
-    <div class="row">
-      <div class="col-md-3">
-        
-        <div class="card text-white bg-primary border-success mb-3">
-          <!-- stock ticker drop down menu -->
-          <div class="card-header">
-            <h5>Stock:</h5>
-            <select id="selTicker"></select>
-          </div>
-
-          <!-- Summary Panel -->
-          <div class="card-body">
-            <h3 class="card-title">Summary</h3>
-            <div id="summaryPanel" class="card-text"></div>
-          </div>
-        
-        </div>
-      
-      </div>
-      
-      <!-- Market Cap bar chart -->
-      <div class="col-md-5">
-        <div id="bar"></div>
-      </div>
-      
-      <!-- Dividend Gauge -->
-      <div class="col-md-4">
-        <div id="gauge"></div>
-      </div>
-    </div>
-    
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="pieGauge"></div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <!-- <script src="{{ url_for('static', filename='js/fundamental.js')}}"></script> -->
-  <script src="/static/js/fundamental.js"></script>
+  <script src="/static/js/environmental.js"></script>
 </body>
 
 </html>
