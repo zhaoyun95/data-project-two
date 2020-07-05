@@ -1,7 +1,6 @@
-# create database schema in Postgres
+# create and populate database
 
-from config import db_username
-from config import db_password
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
 import pandas as pd
@@ -9,7 +8,18 @@ import psycopg2
 import glob
 from pathlib import Path
 
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
+db_uri = ""
+try:
+    from config import db_username
+    from config import db_password
+    db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
+except ImportError:
+    db_uri = "sqlite:///db.sqlite"
+
+final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
+print(final_db_uri)
+
+engine = create_engine(final_db_uri)
 connection = engine.connect()
 
 # function to execute .sql file

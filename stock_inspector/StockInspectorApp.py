@@ -1,9 +1,7 @@
 # project-2 Stocker Picker App
 # Tanvir Khan, Nicky Pant, Paul Pineda, James Ye, Fabienne Zumbuehl
 
-import numpy as np
-from config import db_username
-from config import db_password
+import os
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -15,7 +13,19 @@ from flask import Flask, render_template, redirect
 #################################################
 # Database Setup
 #################################################
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase')
+db_uri = ""
+try:
+    from .config import db_username
+    from .config import db_password
+    db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
+except ImportError:
+    print("config not found!")
+    db_uri = "sqlite:///db.sqlite"
+
+final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
+print(final_db_uri)
+
+engine = create_engine(final_db_uri)
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -30,7 +40,7 @@ Price = Base.classes.price
 #################################################
 # Flask Setup
 #################################################
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 
 
 #################################################
