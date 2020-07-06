@@ -43,8 +43,10 @@ function makePriceChart(){
     .y1(function(d) { return y2(d.close); });
 
   // clear price chart
-  var priceChart = d3.select('#priceChart');
-  priceChart.html("");
+  if (document.getElementById("appendCheck").checked == false) {
+    var priceChart = d3.select('#priceChart');
+    priceChart.html("");
+  }
 
   var svg = d3.select('#priceChart').append('svg')
     .attr('class', 'chart')
