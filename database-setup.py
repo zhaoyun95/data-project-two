@@ -8,9 +8,6 @@ import psycopg2
 import glob
 from pathlib import Path
 
-<<<<<<< HEAD
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5433/StocksDataBase')
-=======
 db_uri = ""
 try:
     from stock_inspector.config import db_username
@@ -23,7 +20,6 @@ final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
 print(final_db_uri)
 
 engine = create_engine(final_db_uri)
->>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214
 connection = engine.connect()
 
 # function to execute .sql file
@@ -92,19 +88,8 @@ for file in priceCSVFiles:
 
     print(file)
     price_df = pd.read_csv(file)
-<<<<<<< HEAD
-    # print(price_df.head())
-    csv_file = file.split('/')[1]
-    
-    # ignore company.csv, we will handle it differetly
-    if csv_file == "company.csv":
-        continue
-
-    ticker = csv_file.strip('.csv')
-=======
   
     ticker = file.stem
->>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214
     price_df["ticker"] = ticker
    
     # rename column heading to match database table columns
