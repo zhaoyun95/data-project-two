@@ -38,6 +38,14 @@ app = Flask(__name__)
 #################################################
 
 @app.route("/")
+def home():
+    return render_template("fabienne.html")
+
+@app.route("/#my-slider")
+def fundamental2():
+    return render_template("fabienne.html")
+
+@app.route("/fundamental")
 def fundamental():
     return render_template("fundamental.html")
 
@@ -77,6 +85,27 @@ def getAllCompanies():
         company['city'] = row.city
         company['latitude'] = row.latitude
         company['longitude'] = row.longitude
+        companies.append(company)
+
+    return jsonify(companies)
+@app.route("/api/v1.0/table")
+def getCompaniesForTable():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    # results is a list of tuples
+    results = session.query(Company).all()
+    session.close()
+    companies = []
+    for row in results:
+        company = {}
+        company['name'] = row.name
+        company['ticker'] = row.ticker
+        company['mkt_cap'] = row.mkt_cap
+        company['exchange'] = row.exchange
+        company['sector'] = row.sector
+        company['country'] = row.country
+        company['city'] = row.city
         companies.append(company)
 
     return jsonify(companies)

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stock Inspector</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/myStyle.css">
+  <link rel="icon" href="{{url_for('static', filename='image/favicon.ico')}}">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='image/StockInspectorLogo-2.png')}}"></a>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/fundamental">Fundamental</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/technical">Technical</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/environmental">Environmental</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="my-slider" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#my-slider" data-slide-to="0" class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{url_for('static', filename='image/stocks.jpg')}}" class="d-block w-100" alt="misty">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Discover the fundamental information about our portfolio</h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h3>What is ESG?</h3> 
+              The ESG is a Risk Score that is composed of the Environment Risk Score, the Social Risk Score and the Governance Risk Score.
+              We adopt the ESG Risk Rating from Sustainanalytics. They rate the dgree to which a company's enterprise business value
+              is at risk driven by environmental, social and governance issues. The rating employs a two-dimensional framework that
+              combines an assessment of a company's exposure to industry-specific material ESG issues. The final ESG Risk Ratings scores
+              are a measure of unmanaged risk on an absolute scalre of 0-100, with a lower score signaling less unmanaged ESG Risk<br> 
+              <br> 
+              <br> 
+              <br> 
+            
+            </div>
+          </div>
+        </div>
+    </div>
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Find your stock</h3> 
+            Insert Worldmap here<br>
+            <br> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer mt-1 py-3">
+      <div class="container text-center">
+        <span class="mb-0"> Copyright © Stock Inspector</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/fundamental.js')}}"></script>
+</body>
+
+</html>
