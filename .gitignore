@@ -4,6 +4,7 @@ notes.txt
 .DS_Store
 james.js
 james.html
+db.sqlite
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,1 @@
+FLASK_ENV=development FLASK_APP=stock_inspector/StockInspectorApp.py flask run

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stock Inspector</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/myStyle.css">
+  <link rel="icon" href="/static/image/favicon.ico">
+  </head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img src="/static/image/StockInspectorLogo-2.png"></a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Fundamentals <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/technical">Technical</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/environmental">Environmental</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Go">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row" col-md-12>
+      <div class="text-center" id="titleSection">
+        <h1>Fundamental Analysis</h1>
+        <p>Use the interactive charts below to check out each stock</p>
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-md-3">
+        
+        <div class="card text-white bg-primary border-success mb-3">
+          <!-- stock ticker drop down menu -->
+          <div class="card-header">
+            <h5>Stock:</h5>
+            <select id="selTicker"></select>
+          </div>
+
+          <!-- Summary Panel -->
+          <div class="card-body">
+            <h3 class="card-title">Summary</h3>
+            <div id="summaryPanel" class="card-text"></div>
+          </div>
+        
+        </div>
+      
+      </div>
+      
+      <!-- Market Cap bar chart -->
+      <div class="col-md-5">
+        <div id="bar"></div>
+      </div>
+      
+      <!-- Dividend Gauge -->
+      <div class="col-md-4">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="pieGauge"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/fundamental.js')}}"></script> -->
+  <script src="/static/js/fundamental.js"></script>
+</body>
+
+</html>

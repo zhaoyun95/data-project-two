@@ -1,14 +1,29 @@
-# create database schema in Postgres
+# create and populate database
 
-from config import db_username
-from config import db_password
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
 import pandas as pd
 import psycopg2
 import glob
+from pathlib import Path
 
+<<<<<<< HEAD
 engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5433/StocksDataBase')
+=======
+db_uri = ""
+try:
+    from stock_inspector.config import db_username
+    from stock_inspector.config import db_password
+    db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
+except ImportError:
+    db_uri = "sqlite:///db.sqlite"
+
+final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
+print(final_db_uri)
+
+engine = create_engine(final_db_uri)
+>>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214
 connection = engine.connect()
 
 # function to execute .sql file
@@ -72,10 +87,12 @@ engine.execute("delete from price")
 
 # loop through all data/*.csv files and load them into price table
 for file in priceCSVFiles:
-    file = file.strip()
-    
+    # use Path() so that it will work for both Windows and Mac
+    file = Path(file.strip())
+
     print(file)
     price_df = pd.read_csv(file)
+<<<<<<< HEAD
     # print(price_df.head())
     csv_file = file.split('/')[1]
     
@@ -84,9 +101,12 @@ for file in priceCSVFiles:
         continue
 
     ticker = csv_file.strip('.csv')
+=======
+  
+    ticker = file.stem
+>>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214
     price_df["ticker"] = ticker
    
-    
     # rename column heading to match database table columns
     price_df.rename(columns = {"Date":"date", "Open":"open", "High":"high", "Low":"low", "Close":"close", "Adj Close":"adj_close", "Volume":"volume"}, inplace=True)
     # make ticker as the first column
