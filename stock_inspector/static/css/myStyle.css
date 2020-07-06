@@ -1,9 +1,22 @@
-#titleSection {
-    /* background-image: url("../images/ocean.jpg"); */
-    color: rgb(42, 5, 209);
-    width: 100%;
+#mapid { 
+    height: 180px; 
+}
+
+
+.jumbotron {
+    background-image: url('../image/Picture.jpg');
+    background-size: 100% 100%; 
 }
 
 body {
-    background-color: cornflowerblue;
+    background-color: rgb(235, 222, 205);
+}
+
+h3 {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.card-body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

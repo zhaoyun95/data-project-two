@@ -2,51 +2,96 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Stock Inspector</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/css/myStyle.css">
-  <link rel="icon" href="/static/image/favicon.ico">
-  </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stock Inspector</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/myStyle.css">
+    <link rel="icon" href="{{url_for('static', filename='image/favicon.ico')}}">
+</head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="/static/image/StockInspectorLogo-2.png"></a>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Fundamentals <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/technical">Technical</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/environmental">Environmental</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Go">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
   <div class="container">
-    <div class="row" col-md-12>
-      <div class="text-center" id="titleSection">
-        <h1>Technical Analysis</h1>
-        <p>Use the interactive charts below to check out each stock</p>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+          <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='image/StockInspectorLogo-2.png')}}"></a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/fundamental">Fundamental</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/technical">Technical</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/environmental">Environmental</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </header>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="my-slider" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#my-slider" data-slide-to="0" class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{url_for('static', filename='image/boot.png')}}" class="d-block w-100" alt="boot">
+              <div class="carousel-caption d-none d-md-block">
+                <h3>Discover the technical data of our portfolio</h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h3>What do we take into account when we say technical?</h3> 
+ 
+              <br> 
+              <br> 
+              <br> 
+            
+            </div>
+          </div>
+        </div>
+    </div>
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Find your stock</h3> 
+            Insert Worldmap here<br>
+            <br> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer mt-1 py-3">
+      <div class="container text-center">
+        <span class="mb-0"> Copyright © Stock Inspector</span>
+      </div>
+    </footer>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- <script src="{{ url_for('static', filename='js/fundamental.js')}}"></script> -->
-  <script src="/static/js/technical.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/technical.js')}}"></script>
 </body>
-
 </html>

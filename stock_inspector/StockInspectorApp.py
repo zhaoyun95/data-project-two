@@ -13,9 +13,6 @@ from flask import Flask, render_template, redirect
 #################################################
 # Database Setup
 #################################################
-<<<<<<< HEAD:StockerInspectorApp.py
-engine = create_engine(f'postgresql://{db_username}:{db_password}@localhost:5433/StocksDataBase')
-=======
 db_uri = ""
 try:
     from .config import db_username
@@ -29,7 +26,6 @@ final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
 print(final_db_uri)
 
 engine = create_engine(final_db_uri)
->>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214:stock_inspector/StockInspectorApp.py
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -53,19 +49,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-<<<<<<< HEAD:StockerInspectorApp.py
-    return render_template("fabienne.html")
-
-@app.route("/#my-slider")
-def fundamental2():
-    return render_template("fabienne.html")
-
-@app.route("/fundamental")
-def fundamental():
-    return render_template("fundamental.html")
-=======
-    return render_template('fundamental.html')
->>>>>>> 1bed98d524f03fe5b27e335aeea62d9cad2a9214:stock_inspector/StockInspectorApp.py
+    return render_template('landingpage.html')
 
 @app.route("/fundamental")
 def fundamental():
@@ -109,28 +93,6 @@ def getAllCompanies():
         companies.append(company)
 
     return jsonify(companies)
-@app.route("/api/v1.0/table")
-def getCompaniesForTable():
-    # Create our session (link) from Python to the DB
-    session = Session(engine)
-
-    # results is a list of tuples
-    results = session.query(Company).all()
-    session.close()
-    companies = []
-    for row in results:
-        company = {}
-        company['name'] = row.name
-        company['ticker'] = row.ticker
-        company['mkt_cap'] = row.mkt_cap
-        company['exchange'] = row.exchange
-        company['sector'] = row.sector
-        company['country'] = row.country
-        company['city'] = row.city
-        companies.append(company)
-
-    return jsonify(companies)
-
 
 @app.route("/api/v1.0/company/<ticker>")
 def getOneCompany(ticker):
@@ -272,7 +234,7 @@ def getPriceStartEnd(ticker, startDate, endDate):
 
     return jsonify(prices)
 
-@app.route(“/api/v1.0/table”)
+@app.route("/api/v1.0/table")
 def getCompaniesForTable():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -282,13 +244,13 @@ def getCompaniesForTable():
     companies = []
     for row in results:
         company = {}
-        company[‘name’] = row.name
-        company[‘ticker’] = row.ticker
-        company[‘mkt_cap’] = row.mkt_cap
-        company[‘exchange’] = row.exchange
-        company[‘sector’] = row.sector
-        company[‘country’] = row.country
-        company[‘city’] = row.city
+        company['name'] = row.name
+        company['ticker'] = row.ticker
+        company['mkt_cap'] = row.mkt_cap
+        company['exchange'] = row.exchange
+        company['sector'] = row.sector
+        company['country'] = row.country
+        company['city'] = row.city
         companies.append(company)
     return jsonify(companies)
 
