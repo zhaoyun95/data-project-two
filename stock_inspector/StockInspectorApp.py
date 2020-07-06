@@ -20,7 +20,7 @@ try:
     db_uri = f'postgresql://{db_username}:{db_password}@localhost:5432/StocksDataBase'
 except ImportError:
     print("config not found!")
-    db_uri = "sqlite:///../db.sqlite"
+    db_uri = "sqlite:///db.sqlite"
 
 final_db_uri = os.environ.get('DATABASE_URL', '') or db_uri
 print(final_db_uri)
@@ -234,6 +234,27 @@ def getPriceStartEnd(ticker, startDate, endDate):
         prices.append(price)
 
     return jsonify(prices)
+
+@app.route(“/api/v1.0/table”)
+def getCompaniesForTable():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+    # results is a list of tuples
+    results = session.query(Company).all()
+    session.close()
+    companies = []
+    for row in results:
+        company = {}
+        company[‘name’] = row.name
+        company[‘ticker’] = row.ticker
+        company[‘mkt_cap’] = row.mkt_cap
+        company[‘exchange’] = row.exchange
+        company[‘sector’] = row.sector
+        company[‘country’] = row.country
+        company[‘city’] = row.city
+        companies.append(company)
+    return jsonify(companies)
+
 
 # this part must be placed at the end of the file!!	
 if __name__ == '__main__':
