@@ -1,15 +1,18 @@
 /* global d3, _ */
 // Date Parser Link: https://github.com/d3/d3-time-format
+// d3.time.format() https://d3-wiki.readthedocs.io/zh_CN/master/Time-Formatting/
 
-(function() {
+function makePriceChart(){
+  // which stock are we dealing with?
+  var selectedTicker = d3.select("#selTicker").property("value");
+
   var margin = {top: 30, right: 20, bottom: 100, left: 50},
     margin2  = {top: 210, right: 20, bottom: 20, left: 50},
-    width    = 764 - margin.left - margin.right,
+    width    = 950 - margin.left - margin.right,
     height   = 283 - margin.top - margin.bottom,
     height2  = 283 - margin2.top - margin2.bottom;
-
-  var parseDate = d3.time.format('%Y-%m-%d').parse,
-    bisectDate = d3.bisector(function(d) { return d.date; }).left,
+ 
+  var bisectDate = d3.bisector(function(d) { return d.date; }).left,
     legendFormat = d3.time.format('%b %d, %Y');
 
   var x = d3.time.scale().range([0, width]),
@@ -26,20 +29,24 @@
   var priceLine = d3.svg.line()
     .interpolate('monotone')
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.price); });
+    .y(function(d) { return y(d.close); });
 
   var avgLine = d3.svg.line()
     .interpolate('monotone')
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.adj_close); });
+    .y(function(d) { return y((d.open + d.close)/2); });
 
   var area2 = d3.svg.area()
     .interpolate('monotone')
     .x(function(d) { return x2(d.date); })
     .y0(height2)
-    .y1(function(d) { return y2(d.price); });
+    .y1(function(d) { return y2(d.close); });
 
-  var svg = d3.select('body').append('svg')
+  // clear price chart
+  var priceChart = d3.select('#priceChart');
+  priceChart.html("");
+
+  var svg = d3.select('#priceChart').append('svg')
     .attr('class', 'chart')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom + 60);
@@ -78,14 +85,30 @@
 
   legend.append('text')
     .attr('class', 'chart__symbol')
-    .text('NASDAQ: AAPL') // Need exchange, company name, ticker drop
+    .text(selectedTicker) // Need exchange, company name, ticker drop
 
   var rangeSelection =  legend
     .append('g')
     .attr('class', 'chart__range-selection')
     .attr('transform', 'translate(110, 0)');
 
-  d3.csv('./data/aapl.csv', type, function(err, data) {
+  var tempURL = `/api/v1.0/price/${selectedTicker}`;
+  var url = selectedTicker == "" ? '/api/v1.0/price/AAPL' : tempURL;
+  d3.json(url, function(data) {
+
+    // convert json elements to Date and numbers
+    data.forEach(function(d){
+      d.date = new Date(d.date);
+      d.close = +d.close;
+      d.price = +d.close;
+      d.open = +d.open;
+      d.high = +d.high;
+      d.low = +d.low;
+      d.adj_close = +d.adj_close;
+      d.volume = +d.volume;
+    });
+
+
     var brush = d3.svg.brush()
       .x(x2)
       .on('brush', brushed);
@@ -268,14 +291,48 @@
       context.select('g.x.brush').call(brush.extent([ext, today]))
     }
 
-  })// end Data
+  });// end Data
+};
 
-  function type(d) {
-    return {
-      date    : parseDate(d.Date),
-      price   : +d.Close,
-      adj_close : +d.adj_close,
-      volume : +d.Volume,
+
+makePriceChart();
+
+
+const url2 = "/api/v1.0/company";
+d3.json(url2, function(data){
+
+    // sort companies by ticker symbol
+    data.sort(function(a,b){
+        if (a.ticker < b.ticker) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
+    // display all data
+    console.log(data);
+
+
+    // get all tickers
+    var tickers = data.map(d=>d.ticker);
+    var names = data.map(d=>d.name);
+    tickers.sort();
+    console.log(tickers);
+   
+
+    // populate the ticker drop down list
+    var dropdownMenu = d3.select("#selTicker");
+    dropdownMenu.on("change", updatePage);
+    dropdownMenu.selectAll("option").remove();
+    tickers.forEach(function(ticker, i){
+        var option = dropdownMenu.append("option").text(`${ticker} ${names[i].substring(0,12)}`);
+        option.attr("value", ticker);
+    });
+
+    function updatePage(){
+        makePriceChart();
     }
-  }
-}());
+
+    // create initial charts
+    updatePage();
+});
