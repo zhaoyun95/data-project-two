@@ -2,6 +2,8 @@
 const url = "/api/v1.0/company";
 
 d3.json(url).then(function(data){
+    // remove companies with no esg score
+    data = data.filter(d=>d.esg_score>0);
 
     // sort companies by ticker symbol
     data.sort(function(a,b){
@@ -35,10 +37,12 @@ d3.json(url).then(function(data){
         updateGauge(data);
     }
 
+    updateGauge(data);
 });
 
 
 function updateGauge(data){
+    
     var selectedTicker = d3.select("#selTicker").property("value");
     console.log(`updateGauge: ${selectedTicker}`);
 
@@ -70,20 +74,20 @@ function updateGauge(data){
             borderwidth: 4,
             bordercolor: "gray",
             steps: [
-              { range: [0, 1], color: 'rgb()'},
-              { range: [1, 2], color: "rgb(204, 255, 229)" },
-              { range: [2, 3], color: "rgb(153, 255, 204)" },
-              { range: [3, 4], color: "rgb(102, 255, 178)" },
-              { range: [4, 5], color: "rgb(51, 255, 153)" },
-              { range: [5, 6], color: "rgb(0, 255, 128)" },
-              { range: [6, 7], color: "rgb(0, 204, 102)" },
-              { range: [7, 8], color: "rgb(0, 153, 76)" },
-              { range: [8, 9], color: "rgb(0, 102, 51)" },
+              { range: [ 0, 10], color: 'rgb()'},
+              { range: [10, 20], color: "rgb(204, 255, 229)" },
+              { range: [20, 30], color: "rgb(153, 255, 204)" },
+              { range: [30, 40], color: "rgb(102, 255, 178)" },
+              { range: [40, 50], color: "rgb(51, 255, 153)" },
+              { range: [50, 60], color: "rgb(0, 255, 128)" },
+              { range: [60, 70], color: "rgb(0, 204, 102)" },
+              { range: [70, 80], color: "rgb(0, 153, 76)" },
+              { range: [80, 100], color: "rgb(0, 102, 51)" },
             ],
             threshold: {
-              line: { color: "black", width: 4 },
+              line: { color: "purple", width: 4 },
               thickness: 0.75,
-              value: 3
+              value: 20
             }
           }
         }
