@@ -3,7 +3,7 @@
 -- comment lines must starts with "--" and ends with semicolon, otherwise you will get an error;
 
 -- company table with  various data;
-drop table if exists company cascade;
+drop table if exists company;
 CREATE TABLE company (
     ticker VARCHAR(20) PRIMARY KEY,
     name VARCHAR(100),

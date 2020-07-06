@@ -30,6 +30,13 @@ d3.json(url).then(function(data){
         option.attr("value", ticker);
     });
 
+    var dropdownMenu2 = d3.select("#selBar");
+    dropdownMenu2.on("change", updateTop10);
+
+    function updateTop10(){
+        updateBarChart(data);
+    }
+
     function updatePage(){
         updateSummaryPanel(data);
         updateGauge(data);
@@ -63,23 +70,44 @@ function updateSummaryPanel(data) {
 // Market Cap Horizontal Bar Chart
 function updateBarChart(data){
     console.log("updateBarChart()");
-    
-    // sort companies by market cap
-    data.sort((a,b) => b.mkt_cap - a.mkt_cap);
+    var barType = d3.select("#selBar").property("value");
 
-    var top10 = data.slice(0,10);
-    top10.reverse();
+    var chartTitle =""
+    var xValues = [];
+    var top10 = []
+    switch(barType) {
+        case "dividendPct":
+            data.sort((a,b) => b.dividend_pct - a.dividend_pct);
+            top10 = data.slice(0,10);
+            top10.reverse();
+            chartTitle = "Dividend Percent";
+            xValues = top10.map(d=>d.dividend_pct);
+            break;
+        case "peRatio":
+            data = data.filter(d=>d.pe_ratio > 0)
+            data.sort((a,b) => a.pe_ratio - b.pe_ratio);
+            top10 = data.slice(0,10);
+            top10.reverse();
+            chartTitle = "Price Earnings Ratio";
+            xValues = top10.map(d=>d.pe_ratio);
+            break;
+        default:
+            data.sort((a,b) => b.mkt_cap - a.mkt_cap);
+            top10 = data.slice(0,10);
+            top10.reverse();
+            chartTitle = "Market Capitalization";
+            xValues = top10.map(d=>d.mkt_cap);
+    }
 
     var tickers = top10.map(d=>d.ticker);
-    var marketCaps = top10.map(d=>d.mkt_cap);
     var labels = top10.map(d=>d.name);
 
     console.log(tickers);
-    console.log(marketCaps);
+    console.log(xValues);
     console.log(labels);
 
     var trace = {
-        x: marketCaps,
+        x: xValues,
         y: tickers,
         text: labels,
         type: "bar",
@@ -95,9 +123,9 @@ function updateBarChart(data){
             t: 40,
             b: 40
         },
-        xaxis: {title:"Market Capitalization"},
+        xaxis: {title:chartTitle},
         yaxis: {title:"Ticker"},
-        title: {text:'Top 10 Companies by Market Cap' }
+        title: {text:`Top 10 Companies by ${chartTitle}` }
     };
 
 

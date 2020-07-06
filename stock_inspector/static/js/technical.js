@@ -8,7 +8,7 @@ function makePriceChart(){
 
   var margin = {top: 30, right: 20, bottom: 100, left: 50},
     margin2  = {top: 210, right: 20, bottom: 20, left: 50},
-    width    = 950 - margin.left - margin.right,
+    width    = 1000 - margin.left - margin.right,
     height   = 283 - margin.top - margin.bottom,
     height2  = 283 - margin2.top - margin2.bottom;
  
