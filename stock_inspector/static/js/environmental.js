@@ -146,7 +146,7 @@ function createESGBarChart(data){
       },
       xaxis: {title: "Tickers"},
       yaxis: {title: "ESG Score"},
-      title: {text: "Environmental, Social, Goverance Risk Score" }
+      title: {text: "Environmental, Social, Governance Risk Score" }
   };
 
 
