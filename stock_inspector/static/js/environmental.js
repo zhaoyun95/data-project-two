@@ -38,6 +38,7 @@ d3.json(url).then(function(data){
     }
 
     updateGauge(data);
+    createESGBarChart(data);
 });
 
 
@@ -101,5 +102,54 @@ function updateGauge(data){
      };
       
     Plotly.newPlot('gauge', data, layout);  
+
+};
+
+
+function createESGBarChart(data){
+  console.log("createESGBarChart()");
+
+  // sort companies by esg score
+  data.sort((a,b) => a.esg_score - b.esg_score);
+
+  var esgValues = data.map(d=>d.esg_score);
+  var tickers = data.map(d=>d.ticker);
+  var labels = data.map(d=>d.name);
+
+  var colors = [];
+  for(i=0;i<tickers.length;i++){
+      var num1 = Math.floor(Math.random() * 256);
+      var num2 = Math.floor(Math.random() * 256);
+      var num3 = Math.floor(Math.random() * 256);
+      var color = `rgb(${num1}, ${num2}, ${num3})`;
+      colors.push(color);
+  }
+
+  var trace = {
+      x: tickers,
+      y: esgValues,
+      text: labels,
+      type: "bar",
+      marker: {
+        color: colors,
+      }
+  };
+
+  var chartData = [trace];
+
+  var layout = {
+      margin: {
+          l: 50,
+          r: 50,
+          t: 40,
+          b: 100
+      },
+      xaxis: {title: "Tickers"},
+      yaxis: {title: "ESG Score"},
+      title: {text: "Environmental, Social, Goverance Risk Score" }
+  };
+
+
+  Plotly.newPlot("esgBar", chartData, layout, {displayModeBar: false});  
 
 };
