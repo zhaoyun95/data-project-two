@@ -63,6 +63,10 @@ def technical():
 def environmental():
     return render_template("environmental.html")
 
+@app.route("/api")
+def apis():
+    return render_template("api.html")
+
 @app.route("/api/v1.0/company")
 def getAllCompanies():
     # Create our session (link) from Python to the DB
