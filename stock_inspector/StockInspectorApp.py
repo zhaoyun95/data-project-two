@@ -41,7 +41,7 @@ Price = Base.classes.price
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+app.config['JSON_SORT_KEYS'] = False
 
 #################################################
 # Flask Routes
