@@ -67,6 +67,11 @@ def environmental():
 def apis():
     return render_template("api.html")
 
+@app.route("/map")
+def map():
+    return render_template("map.html")
+
+
 @app.route("/api/v1.0/company")
 def getAllCompanies():
     # Create our session (link) from Python to the DB

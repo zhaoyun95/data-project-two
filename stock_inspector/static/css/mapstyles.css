@@ -1,0 +1,9 @@
+body {  
+    padding: 0;  
+    margin: 0;  
+    font-family: 'Barlow Condensed' , sans-serif;  
+    font-size: 20px;}
+#mapid,
+body,
+html {  
+    height: 100%;}

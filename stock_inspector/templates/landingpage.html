@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stock Inspector</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -36,6 +35,9 @@
                 <a class="nav-link" href="/environmental">Environmental</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/map">Map</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/api">APIs</a>
               </li>
             </ul>
@@ -61,7 +63,7 @@
             <div class="carousel-item">
               <img src="{{url_for('static', filename='image/boot.png')}}" class="d-block w-100" alt="boot">
               <div class="carousel-caption d-none d-md-block">
-                <h3>Guiding you through the icebergs of investmet</h3>
+                <h3>Guiding you through the icebergs of investment</h3>
                 <p>Invest with us and your investments won't sink</p>
               </div>
             </div>
@@ -124,20 +126,6 @@
             <aside class="filters">
               <div class="panel panel-default">
                 <div class="panel-heading"><h3>Use the Search Panel to Browse through the Table</h3></div>
-                <!-- <div class="panel-body">
-                  <form id="filter">
-                    <div class="form-group">
-                      <ul class="list-group" id="filters">
-                        <li class="filter list-group-item">
-                          <label for="ticker">Enter a Ticker</label>
-                          <input class="form-control" id="ticker" type="text" value="AAPL" placeholder="AAPL">
-                        </li>
-                      </ul>
-                    </div>
-                    <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                    <button id="reset-btn" type="button" class="btn btn-default">Reset Table</button>
-                  </form>
-                </div> -->
               </div>
             </aside>
           </div>
