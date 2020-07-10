@@ -33,7 +33,7 @@
     stroke-width: 2px;
     stroke: #2980b9;
   }
-  .chart__adj_close--focus {
+  .chart__avg--focus {
     stroke-width: 2px;
     stroke: #f00;
     opacity: 0.3;
@@ -46,7 +46,7 @@
     fill: none;
     stroke: #f00;
   }
-  .chart__tooltip--adj_close{
+  .chart__tooltip--avg{
     fill: none;
     stroke: #f00;
   }
