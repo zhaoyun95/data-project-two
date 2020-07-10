@@ -19,9 +19,13 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
           <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='image/StockInspectorLogo-2.png')}}"></a>
-          <!-- <a class="navbar-brand" href="/">Stock Inspector</a> -->
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo03"> -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">  
+            <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> -->
+            <ul class="navbar-nav mr-auto"> 
               <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
@@ -40,7 +44,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="/api">APIs</a>
               </li>
-
             </ul>
           </div>
       </nav>
