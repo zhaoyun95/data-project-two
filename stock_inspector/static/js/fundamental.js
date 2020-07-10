@@ -11,14 +11,14 @@ d3.json(url).then(function(data){
         }
     });
     // display all data
-    console.log(data);
+    // console.log(data);
 
 
     // get all tickers
     var tickers = data.map(d=>d.ticker);
     var names = data.map(d=>d.name);
     tickers.sort();
-    console.log(tickers);
+    // console.log(tickers);
    
 
     // populate the ticker drop down list
@@ -50,7 +50,7 @@ d3.json(url).then(function(data){
 
 function updateSummaryPanel(data) {
     var selectedTicker = d3.select("#selTicker").property("value");
-    console.log(`updateSummaryPanel: ${selectedTicker}`);
+    // console.log(`updateSummaryPanel: ${selectedTicker}`);
     
     var summaryPanel = d3.select("#summaryPanel");
     summaryPanel.selectAll("div").remove();
@@ -69,7 +69,7 @@ function updateSummaryPanel(data) {
 
 // Market Cap Horizontal Bar Chart
 function updateBarChart(data){
-    console.log("updateBarChart()");
+    // console.log("updateBarChart()");
     var barType = d3.select("#selBar").property("value");
 
     var chartTitle =""
@@ -102,9 +102,9 @@ function updateBarChart(data){
     var tickers = top10.map(d=>d.ticker);
     var labels = top10.map(d=>d.name);
 
-    console.log(tickers);
-    console.log(xValues);
-    console.log(labels);
+    // console.log(tickers);
+    // console.log(xValues);
+    // console.log(labels);
 
     var trace = {
         x: xValues,
@@ -135,7 +135,7 @@ function updateBarChart(data){
 
 // show Earnings Per Share (eps)
 function updateBubbleChart(data){
-    console.log("updateBubbleChart()");
+    // console.log("updateBubbleChart()");
 
     var tickers = data.map(d=>d.ticker);
     var values = data.map(d=>d.pe_ratio);
@@ -184,7 +184,7 @@ function updateBubbleChart(data){
 // show EPS for single company
 function updateGauge(data){
     var selectedTicker = d3.select("#selTicker").property("value");
-    console.log(`updateGauge: ${selectedTicker}`);
+    // console.log(`updateGauge: ${selectedTicker}`);
 
     var company = {}
     for (i = 0; i < data.length; i++) {

@@ -1,7 +1,3 @@
-/* global d3, _ */
-// Date Parser Link: https://github.com/d3/d3-time-format
-// d3.time.format() https://d3-wiki.readthedocs.io/zh_CN/master/Time-Formatting/
-
 function makePriceChart(){
   // which stock are we dealing with?
     var selectedTicker = d3.select("#selTicker").property("value");
@@ -301,7 +297,7 @@ function makePriceChart(){
   
       function focusOnRange(range) {
         var today = new Date(data[data.length - 1].date)
-        console.log(today)
+
         var ext = new Date(data[data.length - 1].date)
   
         if (range === '1m')
@@ -346,14 +342,14 @@ function makePriceChart(){
           }
       });
       // display all data
-      console.log(data);
+      // console.log(data);
   
   
       // get all tickers
       var tickers = data.map(d=>d.ticker);
       var names = data.map(d=>d.name);
       tickers.sort();
-      console.log(tickers);
+      // console.log(tickers);
      
   
       // populate the ticker drop down list

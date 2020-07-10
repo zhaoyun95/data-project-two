@@ -13,15 +13,12 @@ d3.json(url).then(function(data){
             return 1;
         }
     });
-    // display all data
-    console.log(data);
-
 
     // get all tickers
     var tickers = data.map(d=>d.ticker);
     var names = data.map(d=>d.name);
     tickers.sort();
-    console.log(tickers);
+    // console.log(tickers);
    
 
     // populate the ticker drop down list
@@ -45,7 +42,7 @@ d3.json(url).then(function(data){
 function updateGauge(data){
     
     var selectedTicker = d3.select("#selTicker").property("value");
-    console.log(`updateGauge: ${selectedTicker}`);
+    // console.log(`updateGauge: ${selectedTicker}`);
 
     var company = {}
     for (i = 0; i < data.length; i++) {
@@ -107,7 +104,7 @@ function updateGauge(data){
 
 
 function createESGBarChart(data){
-  console.log("createESGBarChart()");
+  // console.log("createESGBarChart()");
 
   // sort companies by esg score
   data.sort((a,b) => a.esg_score - b.esg_score);

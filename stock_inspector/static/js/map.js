@@ -8,7 +8,7 @@ data.mkt_cap = +data.mkt_cap;
 data.pe_ratio = +data.pe_ratio;
 data.dividend_pct = +data.dividend_pct;
 data.esg_score = +data.esg_score;
-console.log(data)
+// console.log(data)
 
 // Function to determine marker size based on population
 function markerSize(mkt_cap) {
