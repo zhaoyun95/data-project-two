@@ -37,13 +37,8 @@ function createPieChart(data){
         }
     })
     
-    var labels = [];
-    var values = [];
-
-    Object.entries(sectorCounts).forEach(([key, value]) => {
-        labels.push(key);
-        values.push(value);
-    });
+    var labels = Object.keys(sectorCounts);
+    var values = Object.values(sectorCounts);
 
     var trace1 = {
         labels: labels,
@@ -54,8 +49,7 @@ function createPieChart(data){
     var data = [trace1];
 
     var layout = {
-
-        data: "Sector Chart"
+        title: "Sector Chart"
     };
 
     Plotly.newPlot("pieChart", data, layout);
