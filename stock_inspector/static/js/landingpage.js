@@ -5,6 +5,8 @@ d3.json(url).then(function(tableData) {
         return Object.values(value)
     });
 
+    var tbody = d3.select("tbody");
+
     console.log(tableValues);
     
         $('#stock-table').DataTable( {
@@ -121,7 +123,8 @@ function createPieChart(data){
         var data = [trace1];
     
         var layout = {
-        title: "'Sector' Chart",
+
+            title: "Sector Chart"
         };
     
         Plotly.newPlot("pieChart", data, layout);

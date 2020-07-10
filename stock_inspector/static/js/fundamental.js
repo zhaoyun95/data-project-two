@@ -172,6 +172,7 @@ function updateBubbleChart(data){
 
     var layout = {
         showlegend: false,
+        title: {text:"Price Earnings Ratio Bubble Chart"},
         xaxis: {title:"Companies"},
         yaxis: {title:"Price Earnings Ratio", range: [-50,400]}
     };
