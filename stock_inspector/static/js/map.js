@@ -127,8 +127,8 @@ function markerSize(mkt_cap) {
   
   // Define a map object
   var myMap = L.map("mapid", {
-    center: [51.505, -0.09],
-    zoom: 3,
+    center: [25.998528,17.8207713],
+    zoom: 2.75,
     layers: [streetmap, cities, popuplab]
   });
   
