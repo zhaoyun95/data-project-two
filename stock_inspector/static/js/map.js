@@ -119,8 +119,8 @@ function markerSize(mkt_cap) {
   // Create an overlay object
   var overlayMaps = {
      "Market Cap": cities,
-     "PE Ratio": PERatiosLayer,
      "Dividend": DividendsLayer,
+     "PE Ratio": PERatiosLayer,
      "ESG Score": ESGLayer,
      "Popups": popuplab
     };
