@@ -13,42 +13,13 @@
 
 <body>
   <div class="container">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='image/StockInspectorLogo-2.png')}}"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">  
-          <ul class="navbar-nav mr-auto"> 
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/fundamental">Fundamental</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/technical">Technical</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/environmental">Environmental</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/map">Map</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/api">APIs</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+    {% include "header.html" %}
     <br>
     <div class="row ml-1">
       <div class="card-deck">
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">All Company Data</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p>/api/v1.0/company</p>
             <p>All company data for all 171 companies in our database</p>
           </div>
@@ -58,7 +29,7 @@
         </div>
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">Single Company Data</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p>/api/v1.0/company/ticker</p>
             <p>ticker: the company stock ticer</p>
           </div>
@@ -68,7 +39,7 @@
         </div>
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">Table Data for Landing Page</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p>/api/v1.0/table</p>
           </div>
           <div class="card-footer">
@@ -82,7 +53,7 @@
       <div class="card-deck">
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">All Price data for a Single Company</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p class="card-text">/api/v1.0/price/ticker</p>
             <p>ticker: company stock ticker</p>
           </div>
@@ -92,7 +63,7 @@
         </div>
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">Price with Start Date</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p class="card-text">/api/v1.0/price/ticker/startdate</p>
             <p>ticker: company stock ticker</p>
             <p>startdate: startdate such as 2016-01-01</p>
@@ -103,7 +74,7 @@
         </div>
         <div class="card border-success">
           <div class="card-header"><h5 class="card-title">Price with Start Date and End Date</h5></div>
-          <div class="card-body text-success">
+          <div class="card-body text-dark">
             <p class="card-text">/api/v1.0/price/ticker/startdate/enddate</p>
             <p>ticker: company stock ticker</p>
             <p>startdate: start date such as 2016-01-01</p>
@@ -117,25 +88,15 @@
 
       </div>
     </div>
-
+    {% include "footer.html" %}
   </div>
-  
-    <br> 
 
-    <footer class="footer mt-1 py-3">
-      <div class="container text-center">
-        <span class="mb-0"> Copyright © Stock Inspector</span>
-      </div>
-    </footer>
-  </div>
-</div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="/static/js/api.js"></script>
 </body>
 
 </html>
