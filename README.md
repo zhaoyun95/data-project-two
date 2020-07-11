@@ -1,4 +1,4 @@
-# An App to help investors pick stocks
+# Stock Inspector - An App to help investors pick stocks
 #### Developers:  
 - Tanvir Khan
 - Nicky Arohi Pant
