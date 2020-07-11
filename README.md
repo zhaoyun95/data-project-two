@@ -1,10 +1,10 @@
 # An App to help investors pick stocks
 #### Developers:  
-Tanvir Khan
-Nicky Arohi Pant
-Fabienne Zumbühl
-James Ye
-Paul Pineda
+- Tanvir Khan
+- Nicky Arohi Pant
+- Paul Pineda
+- James Ye
+- Fabienne Zumbühl
 ## We have downloaded 171 company data from yahoo finance and loaded into our database
 ## instructions to setup this app in your local environment
 1. clone this repo to your computer
