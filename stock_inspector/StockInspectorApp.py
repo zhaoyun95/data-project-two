@@ -63,14 +63,17 @@ def technical():
 def environmental():
     return render_template("environmental.html")
 
-@app.route("/api")
-def apis():
-    return render_template("api.html")
-
 @app.route("/map")
 def map():
     return render_template("map.html")
 
+@app.route("/api")
+def apis():
+    return render_template("api.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 @app.route("/api/v1.0/company")
 def getAllCompanies():

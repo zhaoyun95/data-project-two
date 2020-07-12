@@ -3,9 +3,13 @@
 }
 
 
-.jumbotron {
-    background-image: url('../image/Picture.jpg');
-    background-size: 100% 100%; 
+.jumbotronAbout {
+    background-image: url('../image/about.png');
+    background-size: 100% 100%;
+}
+
+#aboutUs {
+    text-align: center;
 }
 
 body {
@@ -20,4 +24,9 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 .card-body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: 200px;
 }

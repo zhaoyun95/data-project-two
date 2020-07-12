@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Inspector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/myStyle.css">
+    <link rel="icon" href="{{url_for('static', filename='image/favicon.ico')}}">
+
+</head>
+<body>
+    <div class="container">
+        {% include "header.html" %}
+        <div class="jumbotron jumbotronAbout">
+            <h1 class="display-4" id="aboutUs">About Us</h1>
+        </div>
+        <div class="row ml-1 mr-1">
+            <div class="card border-success" style="width: 100%;">
+                <div class="card-body">
+                    <h1 class="card-title text-success">Our Mission: Make investments more accessible and easier!</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h2>Our Executive Team:</h2>
+        <hr>
+        <div class="row ml-1 mr-2">
+            <div class="card-deck">
+                <div class="card border-success">
+                  <div class="card-header">James Ye</div>
+                  <img src="/static/image/james.png" class="card-img-top" alt="James Ye">
+                  <div class="card-body">
+                    <h4 class="card-title">CEO / Co-Founder</h4>
+                    <p class="card-text text-success">“I love combining the rationality of coding with the emotions  of financial markets”</p>
+                  </div>
+                </div>
+                <div class="card border-success">
+                  <div class="card-header">Tanvir Khan</div>
+                  <img src="/static/image/tanvir.png" class="card-img-top" alt="Tanvir Khan">
+                  <div class="card-body">
+                    <h4 class="card-title">CTO / Co-Founder</h4>
+                    <p class="card-text text-success">“I want to encourage more women to invest”</p>
+                  </div>
+                </div>
+            </div>    
+        </div>
+        <br>
+        <div class="row ml-1 mr-2">
+            <div class="card-deck">
+                <div class="card border-success">
+                  <div class="card-header">Nicky Pant</div>
+                  <img src="/static/image/nicky.png" class="card-img-top" alt="Nicky Pant">
+                  <div class="card-body">
+                    <h4 class="card-title">Financial Advisor</h4>
+                    <p class="card-text text-success">“I love when stocks hit the moon and I see my clients happy”</p>
+                  </div>
+                </div>
+                <div class="card border-success">
+                  <div class="card-header">Paul Pineda</div>
+                  <img src="/static/image/paul.png" class="card-img-top" alt="Paul Pineda">
+                  <div class="card-body">
+                    <h4 class="card-title">CIO</h4>
+                    <p class="card-text text-success">“Educating customers on investments opportunities is my passion”</p>
+                  </div>
+                </div>
+                <div class="card border-success">
+                    <div class="card-header">Fabienne Zumbühl</div>
+                    <img src="/static/image/fabienne.png" class="card-img-top" alt="Fabienne Zumbühl">
+                    <div class="card-body">
+                      <h4 class="card-title">CDO</h4>
+                      <p class="card-text text-success">“The excitement of collecting data keeps me awake at night”</p>
+                    </div>
+                </div>
+            </div>    
+        </div>
+
+        {% include "footer.html" %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
